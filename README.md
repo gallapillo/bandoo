@@ -5,6 +5,7 @@
   * MVVM
   * Firebase
   * MaterialDrawer
+  * CircleImageView
 
 ### alpha 0.1
 
