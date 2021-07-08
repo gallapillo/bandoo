@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import com.example.bandoo.R
 import com.example.bandoo.databinding.ActivityRegisterBinding
 import com.example.bandoo.ui.fragments.EnterPhoneNumberFragment
+import com.example.bandoo.utilits.initFirebase
 import com.example.bandoo.utilits.replaceFragment
 
 class RegisterActivity : AppCompatActivity() {
@@ -17,7 +18,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-
+        initFirebase()
     }
 
     override fun onStart() {
@@ -25,7 +26,7 @@ class RegisterActivity : AppCompatActivity() {
         mToolbar = mBinding.registerToolbar
         setSupportActionBar(mToolbar)
         title = getString(R.string.register_title_your_phone)
-        replaceFragment(EnterPhoneNumberFragment())
+        replaceFragment(EnterPhoneNumberFragment(), false)
     }
 
 

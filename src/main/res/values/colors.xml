@@ -6,6 +6,8 @@
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#3A3939</color>
 
+    <color name="purple_500">#512DA8</color>
+
     <!-- OVERWRITE THESE COLORS FOR A LIGHT THEME -->
     <!-- MaterialDrawer DEFAULT colors -->
     <color name="material_drawer_background">#F9F9F9</color>
