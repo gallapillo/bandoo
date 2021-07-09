@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.bandoo.MainActivity
+import com.example.bandoo.utilits.APP_ACTIVITY
 
 
 open class BaseFragment(layout: Int) : Fragment(layout) {
@@ -27,6 +28,6 @@ open class BaseFragment(layout: Int) : Fragment(layout) {
 
     override fun onStop() {
         super.onStop()
-        (activity as MainActivity).mAppDrawer.enableDrawer()
+        APP_ACTIVITY.hideKeyboard()
     }
 }
