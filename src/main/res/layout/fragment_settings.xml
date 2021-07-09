@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/colorBlack"
-            android:text="@string/settings_deafult_username"
+            tools:text="@string/settings_deafult_username"
             app:layout_constraintStart_toEndOf="@id/setting_user_photo"
             android:layout_marginStart="@dimen/horizontal_margin"
             android:textSize="@dimen/normalText"
@@ -41,10 +41,11 @@
             app:layout_constraintTop_toTopOf="@id/setting_user_photo"
             android:layout_marginTop="@dimen/vertical_margin"
             /><TextView
+        android:id="@+id/settings_status"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/colorBlack"
-        android:text="@string/settings_defatult_status"
+        tools:text="@string/settings_defatult_status"
         app:layout_constraintStart_toEndOf="@id/setting_user_photo"
         android:layout_marginStart="@dimen/normalText"
         android:textSize="@dimen/small_text"
@@ -78,7 +79,7 @@
         android:id="@+id/setting_phone_number"
         app:layout_constraintTop_toTopOf="@id/setting_btn_change_number_phone"
 
-        android:text="@string/settings_default_number"
+        tools:text="@string/settings_default_number"
         app:layout_constraintStart_toStartOf="parent"
 
         style="@style/normalText" />
@@ -109,7 +110,7 @@
             android:id="@+id/setting_username"
             app:layout_constraintTop_toTopOf="@id/setting_btn_change_username"
 
-            android:text="@string/setings_default_login"
+            tools:text="@string/setings_default_login"
             app:layout_constraintStart_toStartOf="parent"
 
             style="@style/normalText" />
@@ -140,7 +141,7 @@
             android:id="@+id/setting_bio"
             app:layout_constraintTop_toTopOf="@id/setting_btn_change_bio"
 
-            android:text="@string/settings_default_bio"
+            tools:text="@string/settings_default_bio"
             app:layout_constraintStart_toStartOf="parent"
 
             style="@style/normalText" />

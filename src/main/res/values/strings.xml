@@ -40,4 +40,10 @@
     <string name="settings_tost_name_isEmpty">Имя не может быть пустым</string>
     <string name="toast_data_update">Данные обновлены</string>
     <string name="change_name_settings_title_text">Введите ваше имя и фамилию</string>
+    <string name="settings_input_username_text">Username</string>
+    <string name="text_title_change_username">Введите ваше уникальное имя пользователя</string>
+    <string name="toast_empty_text">Поле пустое</string>
+    <string name="toast_user_isadd">Такой пользователь уже суещствует</string>
+    <string name="title_change_bio_text">Опишите вашу биографию здесь</string>
+    <string name="hint_change_bio_text">О себе</string>
 </resources>
