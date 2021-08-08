@@ -1,5 +1,6 @@
 package com.example.bandoo.utilits
 
+import android.net.Uri
 import com.example.bandoo.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -24,7 +25,8 @@ const val CHILD_PHONE = "phone"
 const val CHILD_USERNAME = "username"
 const val CHILD_FULLNAME = "fullname"
 const val CHILD_BIO = "bio"
-
+const val CHILD_PHOTO_URL = "photoUrl"
+const val CHILD_STATE = "status"
 
 fun initFirebase() {
     AUTH = FirebaseAuth.getInstance()
@@ -36,3 +38,28 @@ fun initFirebase() {
 
 }
 
+inline fun putUrlToDatabase(url: String, crossinline function: () -> Unit) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+        .child(CHILD_PHOTO_URL).setValue(url).addOnSuccessListener{ function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+inline fun getUrlFromStorage(path: StorageReference, crossinline function: (url:String) -> Unit) {
+    path.downloadUrl.addOnSuccessListener{ function(it.toString()) }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+inline fun putImageToStorage(uri: Uri, path: StorageReference, crossinline function: () -> Unit) {
+    path.putFile(uri).addOnSuccessListener{ function() }
+        .addOnFailureListener { showToast(it.message.toString()) }
+}
+
+inline fun initUser(crossinline function: () -> Unit) {
+    REF_DATABASE_ROOT.child(NODE_USERS).child(UID).addListenerForSingleValueEvent(AppValueEventListener{
+        USER = it.getValue(User::class.java) ?: User()
+        if (USER.username.isEmpty()) {
+            USER.username = UID
+        }
+        function()
+    })
+}

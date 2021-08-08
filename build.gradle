@@ -61,6 +61,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.0.4"
     implementation 'androidx.browser:browser:1.2.0'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    implementation 'com.squareup.picasso:picasso:2.71828'
 
 // Add for NavController support
     implementation "com.mikepenz:materialdrawer-nav:7.0.0"
