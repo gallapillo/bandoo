@@ -6,6 +6,7 @@
   * Firebase
   * MaterialDrawer
   * CircleImageView
+  * Picasso
 
 ### beta 1.0
 
