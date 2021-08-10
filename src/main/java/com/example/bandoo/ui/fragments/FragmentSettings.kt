@@ -22,6 +22,7 @@ class FragmentSettings : BaseFragment(R.layout.fragment_settings) {
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        APP_ACTIVITY.title = "Настройки"
         initFields()
     }
 
@@ -80,22 +81,6 @@ class FragmentSettings : BaseFragment(R.layout.fragment_settings) {
                     }
                 }
             }
-                /*path.putFile(uri).addOnCompleteListener{ task1 ->
-                if(task1.isSuccessful){
-                    path.downloadUrl.addOnCompleteListener { task2 ->
-                        if (task2.isSuccessful) {
-                            val photoUrl = task2.result.toString()
-                            REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
-                                .child(CHILD_PHOTO_URL).setValue(photoUrl)
-                                .addOnCompleteListener { task3 ->
-                                    if (task3.isSuccessful) {
-
-                                    }
-                                }
-                        }
-                    }
-                }
-            }*/
         }
     }
 }
