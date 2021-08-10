@@ -46,4 +46,5 @@
     <string name="toast_user_isadd">Такой пользователь уже суещствует</string>
     <string name="title_change_bio_text">Опишите вашу биографию здесь</string>
     <string name="hint_change_bio_text">О себе</string>
+    <string name="Welcome_toast_text">Добро пожаловать</string>
 </resources>
