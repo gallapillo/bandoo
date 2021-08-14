@@ -1,16 +1,11 @@
 package com.example.bandoo.ui.fragments
 
-import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
-import com.example.bandoo.MainActivity
 import com.example.bandoo.R
 import com.example.bandoo.utilits.*
-import kotlinx.android.synthetic.main.fragment_change_user_name.*
+import kotlinx.android.synthetic.main.fragment_change_username.*
 import java.util.*
 
-
-class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_name) {
+class ChangeUsernameFragment : BaseChangeFragment(R.layout.fragment_change_username) {
 
     lateinit var mNewUsername: String
 
@@ -19,17 +14,16 @@ class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_
         settings_input_username.setText(USER.username)
     }
 
-
     override fun change() {
         mNewUsername = settings_input_username.text.toString().toLowerCase(Locale.getDefault())
-        if (mNewUsername.isEmpty()) {
+        if (mNewUsername.isEmpty()){
             showToast("Поле пустое")
         } else {
             REF_DATABASE_ROOT.child(NODE_USERNAMES)
-                .addListenerForSingleValueEvent(AppValueEventListener {
-                    if (it.hasChild(mNewUsername)) {
+                .addListenerForSingleValueEvent(AppValueEventListener{
+                    if (it.hasChild(mNewUsername)){
                         showToast("Такой пользователь уже существует")
-                    } else {
+                    } else{
                         changeUsername()
                     }
                 })
@@ -38,20 +32,21 @@ class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_
     }
 
     private fun changeUsername() {
-
-        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(UID)
+        /* Изменение username в базе данных */
+        REF_DATABASE_ROOT.child(NODE_USERNAMES).child(mNewUsername).setValue(CURRENT_UID)
             .addOnCompleteListener {
-                if (it.isSuccessful) {
+                if (it.isSuccessful){
                     updateCurrentUsername()
                 }
             }
     }
 
     private fun updateCurrentUsername() {
-        REF_DATABASE_ROOT.child(NODE_USERS).child(UID).child(CHILD_USERNAME)
+        /* Обновление username в базе данных у текущего пользователя */
+        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_USERNAME)
             .setValue(mNewUsername)
             .addOnCompleteListener {
-                if (it.isSuccessful) {
+                if (it.isSuccessful){
                     showToast(getString(R.string.toast_data_update))
                     deleteOldUsername()
                 } else {
@@ -61,9 +56,10 @@ class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_
     }
 
     private fun deleteOldUsername() {
+        /* Удаление старого username из базы данных  */
         REF_DATABASE_ROOT.child(NODE_USERNAMES).child(USER.username).removeValue()
             .addOnCompleteListener {
-                if (it.isSuccessful) {
+                if (it.isSuccessful){
                     showToast(getString(R.string.toast_data_update))
                     fragmentManager?.popBackStack()
                     USER.username = mNewUsername
@@ -72,5 +68,4 @@ class ChangeUserNameFragment : BaseChangeFragment(R.layout.fragment_change_user_
                 }
             }
     }
-
 }

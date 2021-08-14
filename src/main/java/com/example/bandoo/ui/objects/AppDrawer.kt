@@ -4,12 +4,10 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.bandoo.R
 import com.example.bandoo.ui.fragments.ContactsFragment
-import com.example.bandoo.ui.fragments.FragmentSettings
+import com.example.bandoo.ui.fragments.SettingsFragment
 import com.example.bandoo.utilits.APP_ACTIVITY
 import com.example.bandoo.utilits.USER
 import com.example.bandoo.utilits.downloadAndSetImage
@@ -25,13 +23,15 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 
-class AppDrawer() {
+
+class AppDrawer {
+
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader
-    lateinit var mDrawerLayout: DrawerLayout
-    private lateinit var  mCurrentProfile: ProfileDrawerItem
+    private lateinit var mDrawerLayout: DrawerLayout
+    private lateinit var mCurrentProfile:ProfileDrawerItem
 
-    fun create(){
+    fun create() {
         initLoader()
         createHeader()
         createDrawer()
@@ -39,6 +39,7 @@ class AppDrawer() {
     }
 
     fun disableDrawer() {
+        /* Отключение выдвигающего меню */
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
         APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
@@ -46,7 +47,8 @@ class AppDrawer() {
             APP_ACTIVITY.supportFragmentManager.popBackStack()
         }
     }
-    fun enableDrawer(){
+
+    fun enableDrawer() {
         APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
@@ -55,82 +57,82 @@ class AppDrawer() {
         }
     }
 
-
     private fun createDrawer() {
-            mDrawer = DrawerBuilder()
-                .withActivity(APP_ACTIVITY)
-                .withToolbar(APP_ACTIVITY.mToolbar)
-                .withActionBarDrawerToggle(true)
-                .withSelectedItem(-1)
-                .withAccountHeader(mHeader)
-                .addDrawerItems(
-                    PrimaryDrawerItem().withIdentifier(100)
-                        .withIconTintingEnabled(true)
-                        .withName("Создать группу")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_create_groups),
-                    PrimaryDrawerItem().withIdentifier(101)
-                        .withIconTintingEnabled(true)
-                        .withName("Создать секретный чат")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_secret_chat),
-                    PrimaryDrawerItem().withIdentifier(102)
-                        .withIconTintingEnabled(true)
-                        .withName("Создать канал")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_create_channel),
-                    PrimaryDrawerItem().withIdentifier(103)
-                        .withIconTintingEnabled(true)
-                        .withName("Контакты")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_contacts),
-                    PrimaryDrawerItem().withIdentifier(104)
-                        .withIconTintingEnabled(true)
-                        .withName("Звонки")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_phone),
-                    PrimaryDrawerItem().withIdentifier(105)
-                        .withIconTintingEnabled(true)
-                        .withName("Избранное")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_favorites),
-                    PrimaryDrawerItem().withIdentifier(106)
-                        .withIconTintingEnabled(true)
-                        .withName("Настройки")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_settings),
-                    DividerDrawerItem(),
-                    PrimaryDrawerItem().withIdentifier(107)
-                        .withIconTintingEnabled(true)
-                        .withName("Пригласить друзей")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_invate),
-                    PrimaryDrawerItem().withIdentifier(108)
-                        .withIconTintingEnabled(true)
-                        .withName("Вопросы о bandoo")
-                        .withSelectable(false)
-                        .withIcon(R.drawable.ic_menu_help)
-                ).withOnDrawerItemClickListener(object :Drawer.OnDrawerItemClickListener{
-                    override fun onItemClick(
-                        view: View?,
-                        position: Int,
-                        drawerItem: IDrawerItem<*>
-                    ): Boolean {
-                        clickToItem(position)
-                        return false
-                    }
-                }).build()
+        mDrawer = DrawerBuilder()
+            .withActivity(APP_ACTIVITY)
+            .withToolbar( APP_ACTIVITY.mToolbar)
+            .withActionBarDrawerToggle(true)
+            .withSelectedItem(-1)
+            .withAccountHeader(mHeader)
+            .addDrawerItems(
+                PrimaryDrawerItem().withIdentifier(100)
+                    .withIconTintingEnabled(true)
+                    .withName("Создать группу")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_create_groups),
+                PrimaryDrawerItem().withIdentifier(101)
+                    .withIconTintingEnabled(true)
+                    .withName("Создать секретный чат")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_secret_chat),
+                PrimaryDrawerItem().withIdentifier(102)
+                    .withIconTintingEnabled(true)
+                    .withName("Создать канал")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_create_channel),
+                PrimaryDrawerItem().withIdentifier(103)
+                    .withIconTintingEnabled(true)
+                    .withName("Контакты")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_contacts),
+                PrimaryDrawerItem().withIdentifier(104)
+                    .withIconTintingEnabled(true)
+                    .withName("Звонки")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_phone),
+                PrimaryDrawerItem().withIdentifier(105)
+                    .withIconTintingEnabled(true)
+                    .withName("Избранное")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_favorites),
+                PrimaryDrawerItem().withIdentifier(106)
+                    .withIconTintingEnabled(true)
+                    .withName("Настройки")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_settings),
+                DividerDrawerItem(),
+                PrimaryDrawerItem().withIdentifier(108)
+                    .withIconTintingEnabled(true)
+                    .withName("Пригласить друзей")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_invate),
+                PrimaryDrawerItem().withIdentifier(109)
+                    .withIconTintingEnabled(true)
+                    .withName("Вопросы о Bandoo")
+                    .withSelectable(false)
+                    .withIcon(R.drawable.ic_menu_help)
+            ).withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
+                override fun onItemClick(
+                    view: View?,
+                    position: Int,
+                    drawerItem: IDrawerItem<*>
+                ): Boolean {
+                   clickToItem(position)
+                    return false
+                }
+            }).build()
 
-        }
+    }
 
-    private fun clickToItem(position:Int) {
-        when(position){
-            7 -> APP_ACTIVITY.replaceFragment(FragmentSettings())
+    private fun clickToItem(position:Int){
+        when (position) {
+            7 -> APP_ACTIVITY.replaceFragment(SettingsFragment())
             4 -> APP_ACTIVITY.replaceFragment(ContactsFragment())
         }
     }
 
     private fun createHeader() {
+        /* Создание хедера*/
         mCurrentProfile = ProfileDrawerItem()
             .withName(USER.fullname)
             .withEmail(USER.phone)
@@ -144,17 +146,20 @@ class AppDrawer() {
             ).build()
     }
 
-    fun updateHeader() {
-        mCurrentProfile = ProfileDrawerItem()
+    fun updateHeader(){
+        /* Обновления хедера */
+        mCurrentProfile
             .withName(USER.fullname)
             .withEmail(USER.phone)
             .withIcon(USER.photoUrl)
 
         mHeader.updateProfile(mCurrentProfile)
+
     }
 
-    private fun initLoader() {
-        DrawerImageLoader.init(object : AbstractDrawerImageLoader(){
+    private fun initLoader(){
+        /* Инициализация лоадера для загрузки картинок в хедер */
+        DrawerImageLoader.init(object :AbstractDrawerImageLoader(){
             override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
                 imageView.downloadAndSetImage(uri.toString())
             }

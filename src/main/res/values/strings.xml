@@ -1,50 +1,31 @@
 <resources>
-    <string name="app_name">bandoo</string>
+    <string name="app_name">Bandoo</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="settings_deafult_username">John Makerrs</string>
-    <string name="settings_defatult_status">В сети</string>
+    <string name="settings_default_username">John Makkers</string>
+    <string name="settings_default_status">в сети</string>
     <string name="settings_text_account">Аккаунт</string>
-    <string name="settings_default_number">+791111111</string>
-    <string name="settings_phone_number">Нажмите, чтобы изменить номер телефона</string>
-    <string name="setings_default_login">Makers</string>
+    <string name="settings_default_number">+79991112233</string>
+    <string name="settings_label_phone_number">Нажмите, чтобы изменить номер телефона</string>
+    <string name="settings_default_login">makkers</string>
     <string name="settings_label_login">Имя пользователя</string>
     <string name="settings_default_bio">О себе</string>
     <string name="settings_label_bio">Напишите немного о себе</string>
     <string name="settings_menu_change_name">Изменить имя</string>
     <string name="settings_menu_exit">Выход</string>
-    <string name="title_activity_register">RegisterActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
-    <string name="register_image">registerimage</string>
-    <string name="register_code">Введите код</string>
-    <string name="register_text_withsend">Мы отправили SMS с кодом проверки на ваш телефон</string>
+    <string name="cd_register_image">register_image</string>
+    <string name="register_text_enter_code">Введите код</string>
+    <string name="register_text_we_sent">Мы отправили SMS с кодом проверки на ваш телефон</string>
     <string name="register_hint_default_code">- - - - - -</string>
     <string name="register_title_your_phone">Ваш телефон</string>
     <string name="register_toast_enter_phone">Введите номер телефона</string>
-    <string name="Welcome_register_text">Добро пожаловать</string>
-    <string name="OK">OK</string>
-    <string name="exmaple_phone">+7__________</string>
-    <string name="phone_test_text">+7(___)___-__-__</string>
-    <string name="input_name_text">Имя</string>
-    <string name="input_text_surname">Фамилия</string>
+    <string name="register_phone_hint">-------------</string>
     <string name="settings_hint_input_name">Имя</string>
-    <string name="settings_hint_input_surname">Фамилия (Необязательно)</string>
-    <string name="settings_tost_name_isEmpty">Имя не может быть пустым</string>
+    <string name="settings_hint_input_surname">Фамилия</string>
+    <string name="settings_toast_name_is_empty">Имя не может быть пустым</string>
     <string name="toast_data_update">Данные обновлены</string>
-    <string name="change_name_settings_title_text">Введите ваше имя и фамилию</string>
-    <string name="settings_input_username_text">Username</string>
-    <string name="text_title_change_username">Введите ваше уникальное имя пользователя</string>
-    <string name="toast_empty_text">Поле пустое</string>
-    <string name="toast_user_isadd">Такой пользователь уже суещствует</string>
-    <string name="title_change_bio_text">Опишите вашу биографию здесь</string>
-    <string name="hint_change_bio_text">О себе</string>
-    <string name="Welcome_toast_text">Добро пожаловать</string>
+    <string name="settings_hint_input_username">username</string>
+    <string name="settings_input_bio">bio</string>
+    <string name="toast_input_message">Введите сообщение</string>
 </resources>

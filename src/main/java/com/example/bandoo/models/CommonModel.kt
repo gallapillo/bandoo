@@ -5,7 +5,13 @@ data class CommonModel(
     var username: String = "",
     var bio: String = "",
     var fullname: String = "",
-    var status:String = "",
+    var status: String = "",
     var phone: String = "",
-    var photoUrl: String = "empty"
+    var photoUrl: String = "empty",
+
+    // Message model
+    var text: String = "",
+    var type: String = "",
+    var from: String = "",
+    var timeStamp: Any = ""
 )

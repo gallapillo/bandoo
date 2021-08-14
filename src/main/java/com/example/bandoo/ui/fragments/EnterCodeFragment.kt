@@ -2,17 +2,15 @@ package com.example.bandoo.ui.fragments
 
 import androidx.fragment.app.Fragment
 import com.example.bandoo.MainActivity
-
 import com.example.bandoo.R
-import com.example.bandoo.activity.RegisterActivity
+import com.example.bandoo.activities.RegisterActivity
 import com.example.bandoo.utilits.*
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_code.*
 
+class EnterCodeFragment(val phoneNumber: String, val id: String) :
+    Fragment(R.layout.fragment_enter_code) {
 
-class EnterCodeFragment(val phoneNumber: String,val id: String) : Fragment(R.layout.fragment_enter_code) {
 
     override fun onStart() {
         super.onStart()
@@ -26,6 +24,7 @@ class EnterCodeFragment(val phoneNumber: String,val id: String) : Fragment(R.lay
     }
 
     private fun enterCode() {
+        /* Функция проверяет код, если все нормально, производит создания информации о пользователе в базе данных.*/
         val code = register_input_code.text.toString()
         val credential = PhoneAuthProvider.getCredential(id, code)
         AUTH.signInWithCredential(credential).addOnCompleteListener { task ->
@@ -41,7 +40,7 @@ class EnterCodeFragment(val phoneNumber: String,val id: String) : Fragment(R.lay
                     .addOnSuccessListener {
                         REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
                             .addOnSuccessListener {
-                                showToast(getString(R.string.Welcome_toast_text))
+                                showToast("Добро пожаловать")
                                 (activity as RegisterActivity).replaceActivity(MainActivity())
                             }
                             .addOnFailureListener { showToast(it.message.toString()) }
