@@ -6,16 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ChangeBioFragment">
 
-    <EditText
-        android:id="@+id/settings_input_bio"
-        style="@style/editText"
-        android:hint="@string/settings_input_bio"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/settings_info_bio"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/colorBlack"
+        android:text="Введите информацию о себе"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/settings_input_bio"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/bg_input_registration"
+        android:hint="@string/settings_input_bio"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="@color/accent"
+        android:textColorHint="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_info_bio" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

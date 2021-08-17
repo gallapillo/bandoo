@@ -9,7 +9,7 @@ import com.example.bandoo.R
 import com.example.bandoo.ui.fragments.ContactsFragment
 import com.example.bandoo.ui.fragments.SettingsFragment
 import com.example.bandoo.utilits.APP_ACTIVITY
-import com.example.bandoo.utilits.USER
+import com.example.bandoo.database.USER
 import com.example.bandoo.utilits.downloadAndSetImage
 import com.example.bandoo.utilits.replaceFragment
 import com.mikepenz.materialdrawer.AccountHeader
@@ -23,6 +23,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 
+/* Обьект реализующий боковое меню Navigation Drawer */
 
 class AppDrawer {
 
@@ -32,6 +33,7 @@ class AppDrawer {
     private lateinit var mCurrentProfile:ProfileDrawerItem
 
     fun create() {
+        /* Создания бокового меню */
         initLoader()
         createHeader()
         createDrawer()
@@ -49,6 +51,7 @@ class AppDrawer {
     }
 
     fun enableDrawer() {
+        /* Включение выдвигающего меню */
         APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
@@ -58,6 +61,7 @@ class AppDrawer {
     }
 
     private fun createDrawer() {
+        /* Создание дравера */
         mDrawer = DrawerBuilder()
             .withActivity(APP_ACTIVITY)
             .withToolbar( APP_ACTIVITY.mToolbar)
@@ -108,7 +112,7 @@ class AppDrawer {
                     .withIcon(R.drawable.ic_menu_invate),
                 PrimaryDrawerItem().withIdentifier(109)
                     .withIconTintingEnabled(true)
-                    .withName("Вопросы о Bandoo")
+                    .withName("Вопросы о телеграм")
                     .withSelectable(false)
                     .withIcon(R.drawable.ic_menu_help)
             ).withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
@@ -126,8 +130,8 @@ class AppDrawer {
 
     private fun clickToItem(position:Int){
         when (position) {
-            7 -> APP_ACTIVITY.replaceFragment(SettingsFragment())
-            4 -> APP_ACTIVITY.replaceFragment(ContactsFragment())
+            7 -> replaceFragment(SettingsFragment())
+            4 -> replaceFragment(ContactsFragment())
         }
     }
 

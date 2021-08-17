@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bandoo.R
+import com.example.bandoo.database.*
 import com.example.bandoo.models.CommonModel
 import com.example.bandoo.ui.fragments.single_chat.SingleChatFragment
 import com.example.bandoo.utilits.*
@@ -29,12 +30,15 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title = "Контакты"
+        AppStates.updateState(AppStates.ONLINE)
         initRecycleView()
     }
 
     private fun initRecycleView() {
         mRecyclerView = contacts_recycle_view
-        mRefContacts = REF_DATABASE_ROOT.child(NODE_PHONES_CONTACTS).child(CURRENT_UID)
+        mRefContacts = REF_DATABASE_ROOT.child(
+            NODE_PHONES_CONTACTS
+        ).child(CURRENT_UID)
 
         val options = FirebaseRecyclerOptions.Builder<CommonModel>()
             .setQuery(mRefContacts, CommonModel::class.java)
@@ -53,15 +57,24 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
                 position: Int,
                 model: CommonModel
             ) {
-                mRefUsers = REF_DATABASE_ROOT.child(NODE_USERS).child(model.id)
+                mRefUsers = REF_DATABASE_ROOT.child(
+                    NODE_USERS
+                ).child(model.id)
 
                 mRefUsersListener = AppValueEventListener {
                     val contact = it.getCommonModel()
+
                     if (contact.fullname.isEmpty()){
                         holder.name.text = model.fullname
                     } else holder.name.text = contact.fullname
+
+                    holder.status.text = contact.status
                     holder.photo.downloadAndSetImage(contact.photoUrl)
-                    holder.itemView.setOnClickListener { replaceFragment(SingleChatFragment(model)) }
+                    holder.itemView.setOnClickListener { replaceFragment(
+                        SingleChatFragment(
+                            model
+                        )
+                    ) }
                 }
 
                 mRefUsers.addValueEventListener(mRefUsersListener)
@@ -84,11 +97,14 @@ class ContactsFragment : BaseFragment(R.layout.fragment_contacts) {
         super.onPause()
         mAdapter.stopListening()
         println()
-        APP_ACTIVITY.title = "Контакты"
         mapListeners.forEach {
             it.key.removeEventListener(it.value)
         }
-        println()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppStates.updateState(AppStates.OFFLINE)
     }
 }
 
