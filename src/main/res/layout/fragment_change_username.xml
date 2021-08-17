@@ -6,16 +6,31 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ChangeUsernameFragment">
 
+    <TextView
+        android:id="@+id/settings_name_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/change_username_info"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/settings_input_username"
         style="@style/editText"
         android:hint="@string/settings_hint_input_username"
+        android:textColor="@color/accent"
+        android:background="@drawable/bg_input_registration"
+        android:textColorHint="@color/accent"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/settings_name_info" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

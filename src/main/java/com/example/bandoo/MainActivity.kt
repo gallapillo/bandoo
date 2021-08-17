@@ -5,9 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.example.bandoo.activities.RegisterActivity
+import com.example.bandoo.database.AUTH
+import com.example.bandoo.database.initFirebase
+import com.example.bandoo.database.initUser
 import com.example.bandoo.databinding.ActivityMainBinding
-import com.example.bandoo.ui.fragments.ChatsFragment
+import com.example.bandoo.ui.fragments.MainFragment
+import com.example.bandoo.ui.fragments.register.EnterPhoneNumberFragment
 import com.example.bandoo.ui.objects.AppDrawer
 import com.example.bandoo.utilits.*
 import kotlinx.coroutines.CoroutineScope
@@ -15,13 +18,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     lateinit var mAppDrawer: AppDrawer
     lateinit var mToolbar: Toolbar
-    private var test = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -41,12 +42,12 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun initFunc() {
+        setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
-            setSupportActionBar(mToolbar)
             mAppDrawer.create()
-            replaceFragment(ChatsFragment(), false)
+            replaceFragment(MainFragment(), false)
         } else {
-            replaceActivity(RegisterActivity())
+            replaceFragment(EnterPhoneNumberFragment(),false)
         }
     }
 
@@ -60,10 +61,7 @@ class MainActivity : AppCompatActivity() {
         AppStates.updateState(AppStates.ONLINE)
     }
 
-    override fun onStop() {
-        super.onStop()
-        AppStates.updateState(AppStates.OFFLINE)
-    }
+
 
     override fun onRequestPermissionsResult(
         requestCode: Int,

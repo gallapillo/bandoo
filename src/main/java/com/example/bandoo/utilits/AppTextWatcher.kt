@@ -3,7 +3,6 @@ package com.example.bandoo.utilits
 import android.text.Editable
 import android.text.TextWatcher
 
-/* Модификация класса TextWatcher */
 
 class AppTextWatcher(val onSuccess: (Editable?) -> Unit) : TextWatcher {
 

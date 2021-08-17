@@ -6,19 +6,27 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import com.example.bandoo.R
-import com.example.bandoo.activities.RegisterActivity
+import com.example.bandoo.database.*
 import com.example.bandoo.utilits.*
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
 
 
+
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
+
+    override fun onStart() {
+        super.onStart()
+        AppStates.updateState(AppStates.ONLINE)
+    }
 
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        APP_ACTIVITY.title = getString(R.string.title_settings)
         initFields()
+        AppStates.updateState(AppStates.ONLINE)
     }
 
     private fun initFields() {
@@ -41,7 +49,6 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
             .start(APP_ACTIVITY,this)
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         activity?.menuInflater?.inflate(R.menu.settings_action_menu, menu)
     }
@@ -51,7 +58,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
             R.id.settings_menu_exit -> {
                 AppStates.updateState(AppStates.OFFLINE)
                 AUTH.signOut()
-                APP_ACTIVITY.replaceActivity(RegisterActivity())
+                restartActivity()
             }
             R.id.settings_menu_change_name -> replaceFragment(ChangeNameFragment())
         }
@@ -59,18 +66,19 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        /* Активность которая запускается для получения картинки для фото пользователя */
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE
             && resultCode == RESULT_OK && data != null
         ) {
 
             val uri = CropImage.getActivityResult(data).uri
-            val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE)
+            val path = REF_STORAGE_ROOT.child(
+                FOLDER_PROFILE_IMAGE
+            )
                 .child(CURRENT_UID)
-            putImageToStorage(uri,path){
-                getUrlFromStorage(path){
-                    putUrlToDatabase(it){
+            putImageToStorage(uri, path) {
+                getUrlFromStorage(path) {
+                    putUrlToDatabase(it) {
                         settings_user_photo.downloadAndSetImage(it)
                         showToast(getString(R.string.toast_data_update))
                         USER.photoUrl = it
@@ -81,4 +89,8 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        AppStates.updateState(AppStates.OFFLINE)
+    }
 }

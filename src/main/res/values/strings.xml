@@ -28,4 +28,15 @@
     <string name="settings_hint_input_username">username</string>
     <string name="settings_input_bio">bio</string>
     <string name="toast_input_message">Введите сообщение</string>
+    <string name="hint_input_message">Сообщение</string>
+    <string name="change_username_info">Введите ваше уникальное имя пользователя</string>
+    <string name="input_fullname">Введите ваше имя и фамилию</string>
+    <string name="Settings_title">Настройки</string>
+    <string name="toast_empty_field">Поле пустое</string>
+    <string name="toast_user_exists">Такой пользователь уже существует</string>
+    <string name="toast_welcome">Добро пожаловать</string>
+    <string name="title_your_number_phone">Ваш номер телефона</string>
+    <string name="toast_welcome_text">Добро пожаловать</string>
+    <string name="title_input_phone_number">Ваш Номер Телефона</string>
+    <string name="title_settings">Настройки</string>
 </resources>

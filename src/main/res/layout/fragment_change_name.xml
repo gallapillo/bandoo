@@ -6,28 +6,46 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.ChangeNameFragment">
 
-    <EditText
-        android:id="@+id/settings_input_name"
-        style="@style/editText"
-        android:hint="@string/settings_hint_input_name"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/change_name_info"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:background="@color/colorPrimary"
-        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:text="@string/input_fullname"
+        android:textColor="@color/colorBlack"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/settings_input_surname"
+        android:id="@+id/settings_input_name"
         style="@style/editText"
-        android:hint="@string/settings_hint_input_surname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/bg_input_registration"
+        android:hint="@string/settings_hint_input_name"
         android:inputType="text"
         android:textAlignment="center"
+        android:textColor="@color/accent"
+        android:textColorHint="@color/accent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/change_name_info" />
+
+    <EditText
+        android:id="@+id/settings_input_surname"
+        style="@style/editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/bg_input_registration"
+        android:hint="@string/settings_hint_input_surname"
+        android:inputType="text"
+        android:textAlignment="center"
+        android:textColor="@color/accent"
+        android:textColorHint="@color/accent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_input_name" />

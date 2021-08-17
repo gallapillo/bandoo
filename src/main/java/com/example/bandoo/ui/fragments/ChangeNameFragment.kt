@@ -1,6 +1,7 @@
 package com.example.bandoo.ui.fragments
 
 import com.example.bandoo.R
+import com.example.bandoo.database.*
 import com.example.bandoo.utilits.*
 import kotlinx.android.synthetic.main.fragment_change_name.*
 
@@ -9,6 +10,7 @@ class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
     override fun onResume() {
         super.onResume()
         initFullnameList()
+        AppStates.updateState(AppStates.ONLINE)
     }
 
     private fun initFullnameList() {
@@ -26,15 +28,12 @@ class ChangeNameFragment : BaseChangeFragment(R.layout.fragment_change_name) {
             showToast(getString(R.string.settings_toast_name_is_empty))
         } else {
             val fullname = "$name $surname"
-            REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID).child(CHILD_FULLNAME)
-                .setValue(fullname).addOnCompleteListener {
-                    if (it.isSuccessful){
-                        showToast(getString(R.string.toast_data_update))
-                        USER.fullname = fullname
-                        APP_ACTIVITY.mAppDrawer.updateHeader()
-                        fragmentManager?.popBackStack()
-                    }
-                }
+            setNameToDatabase(fullname)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        AppStates.updateState(AppStates.OFFLINE)
     }
 }
