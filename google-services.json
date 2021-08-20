@@ -8,7 +8,7 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1018451838344:android:78670fd37ce55213cae63d",
+        "mobilesdk_app_id": "1:1018451838344:android:61b0abf2894ab844cae63d",
         "android_client_info": {
           "package_name": "com.example.bandoo"
         }
@@ -45,7 +45,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1018451838344:android:112fa7768f895370cae63d",
+        "mobilesdk_app_id": "1:1018451838344:android:8674c6e60a6fa84dcae63d",
         "android_client_info": {
           "package_name": "com.example.telegram"
         }

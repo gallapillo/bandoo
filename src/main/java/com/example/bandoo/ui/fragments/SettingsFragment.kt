@@ -76,7 +76,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
                 FOLDER_PROFILE_IMAGE
             )
                 .child(CURRENT_UID)
-            putImageToStorage(uri, path) {
+            putFIleToStorage(uri, path) {
                 getUrlFromStorage(path) {
                     putUrlToDatabase(it) {
                         settings_user_photo.downloadAndSetImage(it)

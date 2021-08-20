@@ -33,7 +33,6 @@ class AppDrawer {
     private lateinit var mCurrentProfile:ProfileDrawerItem
 
     fun create() {
-        /* Создания бокового меню */
         initLoader()
         createHeader()
         createDrawer()
@@ -41,7 +40,6 @@ class AppDrawer {
     }
 
     fun disableDrawer() {
-        /* Отключение выдвигающего меню */
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
         APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
@@ -51,7 +49,6 @@ class AppDrawer {
     }
 
     fun enableDrawer() {
-        /* Включение выдвигающего меню */
         APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
@@ -61,7 +58,6 @@ class AppDrawer {
     }
 
     private fun createDrawer() {
-        /* Создание дравера */
         mDrawer = DrawerBuilder()
             .withActivity(APP_ACTIVITY)
             .withToolbar( APP_ACTIVITY.mToolbar)
@@ -112,7 +108,7 @@ class AppDrawer {
                     .withIcon(R.drawable.ic_menu_invate),
                 PrimaryDrawerItem().withIdentifier(109)
                     .withIconTintingEnabled(true)
-                    .withName("Вопросы о телеграм")
+                    .withName("Вопросы о Bandoo")
                     .withSelectable(false)
                     .withIcon(R.drawable.ic_menu_help)
             ).withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
@@ -136,7 +132,6 @@ class AppDrawer {
     }
 
     private fun createHeader() {
-        /* Создание хедера*/
         mCurrentProfile = ProfileDrawerItem()
             .withName(USER.fullname)
             .withEmail(USER.phone)
@@ -151,7 +146,6 @@ class AppDrawer {
     }
 
     fun updateHeader(){
-        /* Обновления хедера */
         mCurrentProfile
             .withName(USER.fullname)
             .withEmail(USER.phone)
@@ -162,7 +156,6 @@ class AppDrawer {
     }
 
     private fun initLoader(){
-        /* Инициализация лоадера для загрузки картинок в хедер */
         DrawerImageLoader.init(object :AbstractDrawerImageLoader(){
             override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
                 imageView.downloadAndSetImage(uri.toString())
