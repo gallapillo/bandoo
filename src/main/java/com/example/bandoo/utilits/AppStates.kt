@@ -5,7 +5,7 @@ import com.example.bandoo.database.*
 enum class AppStates(val state:String) {
 
     ONLINE("в сети"),
-    OFFLINE("не в сети"),
+    OFFLINE("Не в сети"),
     TYPING("печатает");
 
     companion object{

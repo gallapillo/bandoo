@@ -39,4 +39,5 @@
     <string name="toast_welcome_text">Добро пожаловать</string>
     <string name="title_input_phone_number">Ваш Номер Телефона</string>
     <string name="title_settings">Настройки</string>
+    <string name="title_contact">Контакты</string>
 </resources>

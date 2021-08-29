@@ -6,8 +6,8 @@ import android.view.View
 import android.widget.ImageView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.bandoo.R
-import com.example.bandoo.ui.fragments.ContactsFragment
-import com.example.bandoo.ui.fragments.SettingsFragment
+import com.example.bandoo.ui.screens.ContactsFragment
+import com.example.bandoo.ui.screens.SettingsFragment
 import com.example.bandoo.utilits.APP_ACTIVITY
 import com.example.bandoo.database.USER
 import com.example.bandoo.utilits.downloadAndSetImage
@@ -23,7 +23,6 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 
-/* Обьект реализующий боковое меню Navigation Drawer */
 
 class AppDrawer {
 

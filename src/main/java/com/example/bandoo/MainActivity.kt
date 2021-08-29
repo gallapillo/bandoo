@@ -9,20 +9,20 @@ import com.example.bandoo.database.AUTH
 import com.example.bandoo.database.initFirebase
 import com.example.bandoo.database.initUser
 import com.example.bandoo.databinding.ActivityMainBinding
-import com.example.bandoo.ui.fragments.MainFragment
-import com.example.bandoo.ui.fragments.register.EnterPhoneNumberFragment
+import com.example.bandoo.ui.screens.MainFragment
+import com.example.bandoo.ui.screens.register.EnterPhoneNumberFragment
 import com.example.bandoo.ui.objects.AppDrawer
 import com.example.bandoo.utilits.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var mBinding: ActivityMainBinding
     lateinit var mAppDrawer: AppDrawer
     lateinit var mToolbar: Toolbar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -61,7 +61,10 @@ class MainActivity : AppCompatActivity() {
         AppStates.updateState(AppStates.ONLINE)
     }
 
-
+    override fun onStop() {
+        super.onStop()
+        AppStates.updateState(AppStates.OFFLINE)
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
