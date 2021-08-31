@@ -9,7 +9,7 @@ import com.example.bandoo.database.AUTH
 import com.example.bandoo.database.initFirebase
 import com.example.bandoo.database.initUser
 import com.example.bandoo.databinding.ActivityMainBinding
-import com.example.bandoo.ui.screens.MainFragment
+import com.example.bandoo.ui.screens.main_list.MainListFragment
 import com.example.bandoo.ui.screens.register.EnterPhoneNumberFragment
 import com.example.bandoo.ui.objects.AppDrawer
 import com.example.bandoo.utilits.*
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(mToolbar)
         if (AUTH.currentUser != null) {
             mAppDrawer.create()
-            replaceFragment(MainFragment(), false)
+            replaceFragment(MainListFragment(), false)
         } else {
             replaceFragment(EnterPhoneNumberFragment(),false)
         }

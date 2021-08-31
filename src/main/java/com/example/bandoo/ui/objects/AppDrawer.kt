@@ -7,7 +7,7 @@ import android.widget.ImageView
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.bandoo.R
 import com.example.bandoo.ui.screens.ContactsFragment
-import com.example.bandoo.ui.screens.SettingsFragment
+import com.example.bandoo.ui.screens.settings.SettingsFragment
 import com.example.bandoo.utilits.APP_ACTIVITY
 import com.example.bandoo.database.USER
 import com.example.bandoo.utilits.downloadAndSetImage

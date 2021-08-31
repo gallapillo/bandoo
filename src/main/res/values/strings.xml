@@ -40,4 +40,9 @@
     <string name="title_input_phone_number">Ваш Номер Телефона</string>
     <string name="title_settings">Настройки</string>
     <string name="title_contact">Контакты</string>
+    <string name="clear_chat">Очистить чат</string>
+    <string name="delete_chat">Удалить чат</string>
+    <string name="toast_clear">Чат очищен</string>
+    <string name="toast_delete">Чат удален</string>
+    <string name="chats_clear">Чат очищен</string>
 </resources>
